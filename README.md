@@ -1,39 +1,58 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
-Welcome,
 
-This is the Code Institute student template for Codeanywhere. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+## Setup react for development
+1. create a frontend directory  
+`mkdir frontend && cd frontend`
+2. run create-react-app command with the code institute template  
+[create-react-app ci template](https://github.com/Code-Institute-Org/cra-template-moments)
+3. remove the .git submodule, .gitignore and README.md  
+`rm -rf .git .gitignore README.md`
+4. add proxy url to package.json  
+`"proxy": "http://localhost:8000"`
+5. start the react development server  
+`npm start`
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Codeanywhere and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **May 11th, 2023**
+<br/>
 
-## Codeanywhere Reminders
+## Running in development
+1. django will run on port 8000  
+`python3 manage.py runserver`
+2. react will run on port 8080  
+`cd frontend && npm start`
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere, in the terminal, type:
+<br/>
 
-`python3 -m http.server`
+## Deployment
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+1. create a staticfiles folder in the project root directory  
+`mkdir staticfiles`
+2. collect admin and rest framework staticfiles  
+`python3 manage.py collectstatic`
+3. cd to the frontend directory and compile the react app  
+`npm run build && mv build ../staticfiles/.`
+ 
+<br/>
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere with no-cache, you can use this alias for `python3 -m http.server`.
+## Production sanity check
+1. ensure all environment varaibles are set, and remote db is initialised
+2. run the django server as normal, do not run the react server
+3. open the gitpod preview on port 8000
 
-`http_server`
+<br/>
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+## Development Environment Variables
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+- DEBUG
+- SECRET_KEY
+- ALLOWED_HOST
+- CLIENT_ORIGIN
+- DATABASE_URL
+- CLOUDINARY_URL
 
-In Codeanywhere you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+## Production Environment Variables
 
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In Codeanywhere, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
-
----
-
-Happy coding!
+- SECRET_KEY
+- ALLOWED_HOST
+- CLIENT_ORIGIN
+- DATABASE_URL
+- CLOUDINARY_URL
